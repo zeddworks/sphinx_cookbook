@@ -23,6 +23,6 @@ when "redhat"
     command "rpm -Uhv http://sphinxsearch.com/files/sphinx-2.0.1-1.el5.x86_64.rpm"
     not_if "rpm -q sphinx" 
   end
-when [ "ubuntu", "debian" ]
+when "ubuntu", "debian"
   package "sphinxsearch"
 end
