@@ -26,18 +26,3 @@ when "redhat"
 when "ubuntu", "debian"
   package "sphinxsearch"
 end
-
-ruby_block "dict_dir" do
-  block do
-    require 'open3'
-    node.set[:sphinx][:dict_dir] = Open3.popen3("aspell config dict-dir")[1].read.chomp
-  end
-end
-
-cookbook_file "#{node[:sphinx][:dict_dir]}/ap.multi" do
-  source "ap.multi"
-  owner "nginx"
-  group "nginx"
-  mode "0755"
-end
-
